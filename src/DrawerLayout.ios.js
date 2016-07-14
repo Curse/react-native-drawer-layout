@@ -229,7 +229,7 @@ export default class DrawerLayout extends React.Component {
 
       if (this._lastOpenValue === 1) {
         //if ((dx > 0 && (Math.abs(dx) > (Math.abs(dy) * 3))) || (moveX < overlayArea)) {
-    	if (moveX < overlayArea) {
+    	if (moveX < overlayArea && (Math.abs(dx) > (Math.abs(dy) * 3))) {
           this._isClosing = true;
           this._closingAnchorValue = this._getOpenValueForX(moveX);
           return true;
