@@ -207,8 +207,9 @@ DrawerLayout = (_class = (_temp = _class2 = function (_React$Component) {_inheri
         return false;}
 
 
+      var deviceWidth = Dimensions.get('window').width;
       if (drawerPosition === 'left') {
-        var overlayArea = DEVICE_WIDTH - (DEVICE_WIDTH - this.props.drawerWidth);
+        var overlayArea = deviceWidth - (deviceWidth - this.props.drawerWidth);
 
         if (this._lastOpenValue === 1) {
           if (dx < 0 && Math.abs(dx) > Math.abs(dy) * 3 || moveX > overlayArea) {
@@ -225,7 +226,7 @@ DrawerLayout = (_class = (_temp = _class2 = function (_React$Component) {_inheri
           return false;}} else 
 
       {
-        var _overlayArea = DEVICE_WIDTH - this.props.drawerWidth + 30;
+        var _overlayArea = deviceWidth - this.props.drawerWidth + 30;
 
         if (this._lastOpenValue === 1) {
           //if ((dx > 0 && (Math.abs(dx) > (Math.abs(dy) * 3))) || (moveX < overlayArea)) {
@@ -235,7 +236,7 @@ DrawerLayout = (_class = (_temp = _class2 = function (_React$Component) {_inheri
             return true;}} else 
 
         {
-          if (moveX >= DEVICE_WIDTH - 35 && dx < 0) {
+          if (moveX >= deviceWidth - 35 && dx < 0) {
             this._isClosing = false;
             return true;}
 
