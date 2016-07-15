@@ -229,8 +229,7 @@ DrawerLayout = (_class = (_temp = _class2 = function (_React$Component) {_inheri
         var _overlayArea = deviceWidth - this.props.drawerWidth + 30;
 
         if (this._lastOpenValue === 1) {
-          //if ((dx > 0 && (Math.abs(dx) > (Math.abs(dy) * 3))) || (moveX < overlayArea)) {
-          if (moveX < _overlayArea && Math.abs(dx) > Math.abs(dy) * 3) {
+          if (dx > 0 && Math.abs(dx) > Math.abs(dy) * 3 && moveX < _overlayArea) {
             this._isClosing = true;
             this._closingAnchorValue = this._getOpenValueForX(moveX);
             return true;}} else 
