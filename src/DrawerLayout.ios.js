@@ -48,6 +48,7 @@ export default class DrawerLayout extends React.Component {
     onDrawerSlide: PropTypes.func,
     onDrawerStateChanged: PropTypes.func,
     renderNavigationView: PropTypes.func.isRequired,
+    panStartPercentage: PropTypes.number,
   };
 
   constructor(props, context) {
@@ -235,7 +236,8 @@ export default class DrawerLayout extends React.Component {
           return true;
         }
       } else {
-        if (moveX >= deviceWidth - 35 && dx < 0) {
+        let panOffset = this.props.panStartPercentage ? (this.props.panStartPercentage * deviceWidth) : 50;
+        if (moveX >= deviceWidth - panOffset && dx < 0) {
           this._isClosing = false;
           return true;
         }
@@ -308,11 +310,12 @@ export default class DrawerLayout extends React.Component {
 
   _getOpenValueForX(x) {
     const { drawerPosition, drawerWidth } = this.props;
+    let deviceWidth = Dimensions.get('window').width;
 
     if (drawerPosition === 'left') {
       return x / drawerWidth;
     } else if (drawerPosition === 'right') {
-      return (DEVICE_WIDTH - x) / drawerWidth;
+      return (deviceWidth - x) / drawerWidth;
     }
   }
 }

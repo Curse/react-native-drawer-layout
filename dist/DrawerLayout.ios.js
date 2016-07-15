@@ -50,6 +50,7 @@ DrawerLayout = (_class = (_temp = _class2 = function (_React$Component) {_inheri
 
 
 
+
   function DrawerLayout(props, context) {_classCallCheck(this, DrawerLayout);var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DrawerLayout).call(this, 
     props, context));
 
@@ -131,18 +132,18 @@ DrawerLayout = (_class = (_temp = _class2 = function (_React$Component) {_inheri
       var animatedOverlayStyles = { opacity: overlayOpacity };
 
       return (
-        _react2.default.createElement(View, _extends({ style: { flex: 1, backgroundColor: 'transparent' } }, this._panResponder.panHandlers, { __source: { fileName: _jsxFileName, lineNumber: 134 } }), 
-        _react2.default.createElement(Animated.View, { style: styles.main, __source: { fileName: _jsxFileName, lineNumber: 135 } }, 
+        _react2.default.createElement(View, _extends({ style: { flex: 1, backgroundColor: 'transparent' } }, this._panResponder.panHandlers, { __source: { fileName: _jsxFileName, lineNumber: 135 } }), 
+        _react2.default.createElement(Animated.View, { style: styles.main, __source: { fileName: _jsxFileName, lineNumber: 136 } }, 
         this.props.children), 
 
 
         drawerShown && 
-        _react2.default.createElement(TouchableWithoutFeedback, { onPress: this._onOverlayClick, __source: { fileName: _jsxFileName, lineNumber: 140 } }, 
+        _react2.default.createElement(TouchableWithoutFeedback, { onPress: this._onOverlayClick, __source: { fileName: _jsxFileName, lineNumber: 141 } }, 
         _react2.default.createElement(Animated.View, { 
-          style: [styles.overlay, animatedOverlayStyles], __source: { fileName: _jsxFileName, lineNumber: 141 } })), 
+          style: [styles.overlay, animatedOverlayStyles], __source: { fileName: _jsxFileName, lineNumber: 142 } })), 
 
 
-        _react2.default.createElement(Animated.View, { style: [styles.drawer, dynamicDrawerStyles, animatedDrawerStyles], __source: { fileName: _jsxFileName, lineNumber: 145 } }, 
+        _react2.default.createElement(Animated.View, { style: [styles.drawer, dynamicDrawerStyles, animatedDrawerStyles], __source: { fileName: _jsxFileName, lineNumber: 146 } }, 
         this.props.renderNavigationView())));} }, { key: '_onOverlayClick', value: function _onOverlayClick(
 
 
@@ -235,7 +236,8 @@ DrawerLayout = (_class = (_temp = _class2 = function (_React$Component) {_inheri
             return true;}} else 
 
         {
-          if (moveX >= deviceWidth - 35 && dx < 0) {
+          var panOffset = this.props.panStartPercentage ? this.props.panStartPercentage * deviceWidth : 50;
+          if (moveX >= deviceWidth - panOffset && dx < 0) {
             this._isClosing = false;
             return true;}
 
@@ -308,11 +310,12 @@ DrawerLayout = (_class = (_temp = _class2 = function (_React$Component) {_inheri
 
     x) {var _props2 = 
       this.props;var drawerPosition = _props2.drawerPosition;var drawerWidth = _props2.drawerWidth;
+      var deviceWidth = Dimensions.get('window').width;
 
       if (drawerPosition === 'left') {
         return x / drawerWidth;} else 
       if (drawerPosition === 'right') {
-        return (DEVICE_WIDTH - x) / drawerWidth;}} }]);return DrawerLayout;}(_react2.default.Component), _class2.defaultProps = { drawerWidth: 0, drawerPosition: 'left' }, _class2.positions = { Left: 'left', Right: 'right' }, _class2.propTypes = { children: PropTypes.node, drawerLockMode: PropTypes.oneOf(['unlocked', 'locked-closed', 'locked-open']), drawerPosition: PropTypes.oneOf(['left', 'right']).isRequired, drawerWidth: PropTypes.number.isRequired, keyboardDismissMode: PropTypes.oneOf(['none', 'on-drag']), onDrawerClose: PropTypes.func, onDrawerOpen: PropTypes.func, onDrawerSlide: PropTypes.func, onDrawerStateChanged: PropTypes.func, renderNavigationView: PropTypes.func.isRequired }, _temp), (_applyDecoratedDescriptor(_class.prototype, '_onOverlayClick', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_onOverlayClick'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'openDrawer', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'openDrawer'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'closeDrawer', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'closeDrawer'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, '_handleDrawerOpen', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_handleDrawerOpen'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, '_handleDrawerClose', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_handleDrawerClose'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, '_shouldSetPanResponder', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_shouldSetPanResponder'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, '_panResponderGrant', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_panResponderGrant'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, '_panResponderMove', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_panResponderMove'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, '_panResponderRelease', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_panResponderRelease'), _class.prototype)), _class);exports.default = DrawerLayout;
+        return (deviceWidth - x) / drawerWidth;}} }]);return DrawerLayout;}(_react2.default.Component), _class2.defaultProps = { drawerWidth: 0, drawerPosition: 'left' }, _class2.positions = { Left: 'left', Right: 'right' }, _class2.propTypes = { children: PropTypes.node, drawerLockMode: PropTypes.oneOf(['unlocked', 'locked-closed', 'locked-open']), drawerPosition: PropTypes.oneOf(['left', 'right']).isRequired, drawerWidth: PropTypes.number.isRequired, keyboardDismissMode: PropTypes.oneOf(['none', 'on-drag']), onDrawerClose: PropTypes.func, onDrawerOpen: PropTypes.func, onDrawerSlide: PropTypes.func, onDrawerStateChanged: PropTypes.func, renderNavigationView: PropTypes.func.isRequired, panStartPercentage: PropTypes.number }, _temp), (_applyDecoratedDescriptor(_class.prototype, '_onOverlayClick', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_onOverlayClick'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'openDrawer', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'openDrawer'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'closeDrawer', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'closeDrawer'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, '_handleDrawerOpen', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_handleDrawerOpen'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, '_handleDrawerClose', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_handleDrawerClose'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, '_shouldSetPanResponder', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_shouldSetPanResponder'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, '_panResponderGrant', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_panResponderGrant'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, '_panResponderMove', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_panResponderMove'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, '_panResponderRelease', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, '_panResponderRelease'), _class.prototype)), _class);exports.default = DrawerLayout;
 
 
 
